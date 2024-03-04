@@ -1,0 +1,7 @@
+[
+    {
+        "id": "deploy",
+        "execute-command": "/var/nomad/deploy.sh",
+        "command-working-directory": "/var/nomad"
+    }
+]
