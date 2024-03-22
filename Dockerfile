@@ -2,7 +2,7 @@
 FROM golang:alpine AS build
 LABEL author="Firmansyah Adiputra <frm.adiputra@gmail.com>"
 WORKDIR /go/src/github.com/adnanh/webhook
-ENV WEBHOOK_VERSION 2.8.1
+ENV WEBHOOK_VERSION=2.8.1
 RUN apk add --update -t build-deps curl libc-dev gcc libgcc
 RUN curl -L --silent -o webhook.tar.gz https://github.com/adnanh/webhook/archive/${WEBHOOK_VERSION}.tar.gz && \
     tar -xzf webhook.tar.gz --strip 1
@@ -19,7 +19,7 @@ ENTRYPOINT ["/usr/local/bin/webhook"]
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 
-ENV NOMAD_VERSION 1.7.5
+ENV NOMAD_VERSION=1.7.5
 
 # RUN curl -L --silent -o nomad.zip https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip && \
 #     unzip nomad.zip -d /usr/local/bin/
