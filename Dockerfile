@@ -36,6 +36,7 @@ RUN apt-get update \
     gnupg \
     unzip \
     git \
+    openssh-client \
     && GNUPGHOME="$(mktemp -d)" \
     && export GNUPGHOME \
     && gpg --keyserver pgp.mit.edu --keyserver keys.openpgp.org --keyserver keyserver.ubuntu.com --recv-keys "C874 011F 0AB4 0511 0D02 1055 3436 5D94 72D7 468F" \
