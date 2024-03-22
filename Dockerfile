@@ -16,8 +16,8 @@ VOLUME ["/etc/webhook"]
 EXPOSE 9000
 ENTRYPOINT ["/usr/local/bin/webhook"]
 
-ARG TARGETOS linux
-ARG TARGETARCH amd64
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
 
 ENV NOMAD_VERSION 1.7.5
 
