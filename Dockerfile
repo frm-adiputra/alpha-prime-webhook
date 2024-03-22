@@ -11,10 +11,11 @@ RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /usr/local/bin/webhook
 
 FROM debian:stable-slim
 COPY --from=build /usr/local/bin/webhook /usr/local/bin/webhook
-WORKDIR /etc/webhook
-VOLUME ["/etc/webhook"]
+WORKDIR /opt/webhook
+VOLUME ["/opt/webhook"]
 EXPOSE 9000
-ENTRYPOINT ["/usr/local/bin/webhook"]
+ENV WEBHOOK_INIT_SCRIPT=/webhook-init.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
@@ -50,3 +51,5 @@ RUN apt-get update \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 RUN nomad version
+
+COPY ./docker-entrypoint.sh /entrypoint.sh
